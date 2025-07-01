@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function createButton(label) {
+      const button = document.createElement('button');
+      button.textContent = label;
+      button.addEventListener('click', function() {
+        // label est capturé/sauvegardé par la closure (ne sera pas nettoyé par le garbage collector)
+        alert(label + ' button clicked!');
+      });
+      document.body.appendChild(button);
+    }
+
+    createButton('Button 1');
+    createButton('Button 2');
+    createButton('Button 3');
+
+
+    // click
+  </script>
+</body>
+</html>
