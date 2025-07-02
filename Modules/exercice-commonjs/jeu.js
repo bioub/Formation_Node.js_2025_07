@@ -1,6 +1,7 @@
 // importer la fonction getRandomInt depuis le fichier random.js
 // exporter la classe Jeu
 const readline = require("readline");
+const Random = require("./random.js");
 
 class Jeu {
   constructor(options = {}) {
@@ -44,3 +45,5 @@ class Jeu {
     });
   }
 }
+
+module.exports = Jeu;

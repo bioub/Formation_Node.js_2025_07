@@ -1,13 +1,14 @@
 // importer la fonction getRandomInt depuis le fichier random.js
 // exporter la classe Jeu
-const readline = require("readline");
+import readline from "node:readline";
+import { getRandomInt } from "./random.js";
 
-class Jeu {
+export default class Jeu {
   constructor(options = {}) {
     this.min = options.min ?? 0;
     this.max = options.max ?? 100;
 
-    this.entierAlea = Random.getRandomInt(this.min, this.max);
+    this.entierAlea = getRandomInt(this.min, this.max);
     this.essais = [];
     this.rl = readline.createInterface({
       input: process.stdin,
