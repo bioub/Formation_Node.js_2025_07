@@ -10,7 +10,7 @@
     function createButton(label) {
       const button = document.createElement('button');
       button.textContent = label;
-      button.addEventListener('click', function() {
+      button.addEventListener('click', () => {
         // label est capturé/sauvegardé par la closure (ne sera pas nettoyé par le garbage collector)
         alert(label + ' button clicked!');
       });

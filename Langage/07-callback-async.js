@@ -28,3 +28,7 @@ console.log('E');
 // do {
 //   traite la pile d'appels
 // } while (callbacks.length > 0);
+
+// Pour approfondir :
+// In the loop - Jake Archibald - JSConf Asia 2018
+// https://www.youtube.com/watch?v=cCOL7MC4Pl0

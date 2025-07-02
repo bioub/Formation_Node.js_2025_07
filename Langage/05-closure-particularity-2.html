@@ -13,7 +13,7 @@
     const buttons = document.querySelectorAll('button');
     for (const button of buttons) {
       // Closure
-      button.addEventListener('click', function() {
+      button.addEventListener('click', () => {
         alert(button.textContent + ' clicked!');
       });
     }

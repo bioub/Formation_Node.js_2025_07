@@ -145,6 +145,8 @@ console.log(typeof person3); // "object"
 console.log(person3.name); // "Charlie"
 console.log(person3.age); // 35
 
+console.log(person3 instanceof Person); // true
+
 // Person.prototype.greet = function () {
 //   console.log(`HELLO, my name is ${this.name} and I am ${this.age} years old.`);
 // };
