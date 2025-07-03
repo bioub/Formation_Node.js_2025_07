@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import joi from 'joi';
 
 import todoRoutes from './routes/todo.js';
 import userRoutes from './routes/user.js';
@@ -17,17 +18,15 @@ app.use(cors());
 app.use('/api/todos', todoRoutes);
 app.use('/api/users', userRoutes);
 
-// eslint-disable-next-line no-unused-vars
-app.use('/api', (req, res, next) => {
+app.use('/api', (req, res, _next) => {
   res.statusCode = 404;
   res.json({
-    msg: req.notFoundReason || 'Not Found',
+    msg: res.locals.notFoundReason || 'Not Found',
   });
 });
 
-// eslint-disable-next-line no-unused-vars
-app.use('/api', (err, req, res, next) => {
-  res.statusCode = 500;
+app.use('/api', (err, req, res, _next) => {
+  res.statusCode = (err instanceof joi.ValidationError) ? 400 : 500;
   console.error(err);
   res.json({
     msg: err.message,

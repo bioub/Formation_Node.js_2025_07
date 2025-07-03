@@ -1,3 +1,10 @@
+import joi from 'joi';
+
+const todoSchema = joi.object({
+  title: joi.string().min(3).max(100).required(),
+  completed: joi.boolean().optional().default(false),
+});
+
 const todos = [
   {
     id: 1,
@@ -32,11 +39,17 @@ export async function findById(id) {
 }
 
 export async function create(todo) {
-  todo.id = nextId();
+  const validatedTodo = await todoSchema.validateAsync(todo, {
+    abortEarly: false, // Validate all fields, not just the first error
+    convert: true, // Convert types if possible
+    stripUnknown: true, // Remove unknown fields
+  });
 
-  todos.push(todo);
+  validatedTodo.id = nextId();
 
-  return todo;
+  todos.push(validatedTodo);
+
+  return validatedTodo;
 }
 
 export async function findByIdAndDelete(id) {
