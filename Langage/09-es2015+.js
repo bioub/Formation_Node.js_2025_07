@@ -30,7 +30,7 @@ console.log(sum(...nombres)); // 15
 // const troisieme = nombres[2];
 
 //    [1      , 2     , 3        , 4     , 5     ]
-const [premier, second, troisieme, ...autres] = nombres;
+const [premier, second = 2, troisieme, ...autres] = nombres;
 console.log(premier); // 1
 console.log(second); // 2
 console.log(troisieme); // 3
@@ -50,10 +50,10 @@ const personne = {
 };
 
 //       { nom: "Alice", age: 30  }
-// const { nom: prenom , age: age } = personne;
+// const { nom: prenom , age: age = 0 } = personne;
 
 // Si la clé et la variable sont les mêmes, on peut faire :
-// const { nom: prenom, age } = personne;
+// const { nom: prenom, age = 0 } = personne;
 
 // console.log(prenom); // Alice
 // console.log(age); // 30

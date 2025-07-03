@@ -81,4 +81,4 @@ Installer et utiliser `yargs` ou `minimist` pour qu'on puisse lancer la commande
 * `--minify` pour minifier le JS ou non
 * `--hash` pour ajouter le checksum dans le nom du fichier ou non
 
-Exemple : `node build --minify --hash`
+Exemple : `node build.js --minify --hash`

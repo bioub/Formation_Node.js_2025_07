@@ -16,6 +16,7 @@ console.log(process.argv);
 // env, les variables d'environnement
 // tout à l'heure on vu NODE_ENV=production
 // qui permet à npm de savoir si on est en mode production ou développement (et donc de charger les bonnes dépendances)
+// dot-env
 console.log(process.env.NODE_ENV ?? 'development'); // 'production' ou 'development'
 
 // cwd, le répertoire de travail courant
