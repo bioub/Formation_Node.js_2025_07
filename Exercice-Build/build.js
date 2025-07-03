@@ -1,4 +1,5 @@
 import { resolve } from "node:path";
+import { Buffer } from "node:buffer";
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
 import { minify } from "terser";
