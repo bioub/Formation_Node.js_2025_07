@@ -3,6 +3,14 @@ import express from "express";
 const app = express();
 const port = 3000;
 
+// Middleware de log
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next(); // Passe au middleware suivant ou à la route
+});
+
+// Body-parser middleware (permet de parser le body des requêtes JSON, et de le rendre accessible via req.body)
+// app.use(express.json());
 
 // app.[NOM_DE_METHODE_HTTP]("/chemin", (req, res) => {});
 // app.get("/chemin", (req, res) => {});
@@ -51,7 +59,8 @@ app.get("/api/users", (req, res) => {
   res.json([{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }]);
 });
 
-app.post('/api/users', (req, res) => {
+app.post('/api/users', express.json(), (req, res) => {
+  console.log(req.body); // req.body contient le corps de la requête JSON
   res.status(201).json({ message: 'User created' });
 });
 
