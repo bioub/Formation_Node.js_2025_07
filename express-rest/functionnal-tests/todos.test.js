@@ -23,3 +23,17 @@ test('GET /api/todos', async () => {
   expect(res.status).toBe(200);
   expect(await res.body).toEqual(expectedTodos);
 });
+
+test('GET /api/todos/:id', async () => {
+  // Arrange
+  const expectedTodo = { id: 1, title: 'Todo 1', completed: false };
+  vi.spyOn(Todo, 'findById').mockResolvedValue(expectedTodo);
+
+  // Act
+  const res = await request(app).get('/api/todos/1');
+
+  // Assert
+  expect(res.status).toBe(200);
+  expect(await res.body).toEqual(expectedTodo);
+  expect(Todo.findById).toHaveBeenCalledWith('1');
+});
