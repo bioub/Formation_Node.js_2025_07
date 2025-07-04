@@ -1,4 +1,4 @@
-import * as Todo from '../models/todo.js';
+import Todo from '../models/todo.js';
 
 /**
  * @param req {import('express').Request}

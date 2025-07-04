@@ -1,97 +1,117 @@
-import joi from 'joi';
+import mongoose from "mongoose";
 
-const todoSchema = joi.object({
-  title: joi.string().min(3).max(100).required(),
-  completed: joi.boolean().optional().default(false),
+const todoSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 100,
+  },
+  completed: {
+    type: Boolean,
+    default: false,
+    required: false,
+  },
 });
 
-const todos = [
-  {
-    id: 1,
-    title: 'Acheter du pain',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'Introduire Express',
-    completed: true,
-  }
-];
+const Todo = mongoose.model("Todo", todoSchema);
 
-export function nextId() {
-  const maxId = todos.reduce((acc, c) => c.id > acc ? c.id : acc, 0);
-  return maxId + 1;
-}
+export default Todo;
 
-export async function find() {
-  return todos;
-}
+// import joi from 'joi';
 
-export async function findById(id) {
-  id = Number(id);
-  const todo = todos.find((c) => c.id === id);
+// const todoSchema = joi.object({
+//   title: joi.string().min(3).max(100).required(),
+//   completed: joi.boolean().optional().default(false),
+// });
 
-  if (!todo) {
-    return null;
-  }
+// const todos = [
+//   {
+//     id: 1,
+//     title: 'Acheter du pain',
+//     completed: false,
+//   },
+//   {
+//     id: 2,
+//     title: 'Introduire Express',
+//     completed: true,
+//   }
+// ];
 
-  return todo;
-}
+// export function nextId() {
+//   const maxId = todos.reduce((acc, c) => c.id > acc ? c.id : acc, 0);
+//   return maxId + 1;
+// }
 
-export async function create(todo) {
-  const validatedTodo = await todoSchema.validateAsync(todo, {
-    abortEarly: false, // Validate all fields, not just the first error
-    convert: true, // Convert types if possible
-    stripUnknown: true, // Remove unknown fields
-  });
+// export async function find() {
+//   return todos;
+// }
 
-  validatedTodo.id = nextId();
+// export async function findById(id) {
+//   id = Number(id);
+//   const todo = todos.find((c) => c.id === id);
 
-  todos.push(validatedTodo);
+//   if (!todo) {
+//     return null;
+//   }
 
-  return validatedTodo;
-}
+//   return todo;
+// }
 
-export async function findByIdAndDelete(id) {
-  id = Number(id);
-  const todo = todos.find((c) => c.id === id);
+// export async function create(todo) {
+//   const validatedTodo = await todoSchema.validateAsync(todo, {
+//     abortEarly: false, // Validate all fields, not just the first error
+//     convert: true, // Convert types if possible
+//     stripUnknown: true, // Remove unknown fields
+//   });
 
-  if (!todo) {
-    return null;
-  }
+//   validatedTodo.id = nextId();
 
-  const index = todos.indexOf(todo);
-  todos.splice(index, 1);
+//   todos.push(validatedTodo);
 
-  return todo;
-}
+//   return validatedTodo;
+// }
 
-export async function findByIdAndReplace(id, newTodo) {
-  id = Number(id);
-  const todo = todos.find((c) => c.id === id);
-  newTodo.id = id;
+// export async function findByIdAndDelete(id) {
+//   id = Number(id);
+//   const todo = todos.find((c) => c.id === id);
 
-  if (!todo) {
-    return null;
-  }
+//   if (!todo) {
+//     return null;
+//   }
 
-  const index = todos.indexOf(todo);
-  todos[index] = newTodo;
+//   const index = todos.indexOf(todo);
+//   todos.splice(index, 1);
 
-  return todo;
-}
+//   return todo;
+// }
 
-export async function findByIdAndUpdate(id, newTodo) {
-  id = Number(id);
-  const todo = todos.find((c) => c.id === id);
+// export async function findByIdAndReplace(id, newTodo) {
+//   id = Number(id);
+//   const todo = todos.find((c) => c.id === id);
+//   newTodo.id = id;
 
-  if (!todo) {
-    return null;
-  }
+//   if (!todo) {
+//     return null;
+//   }
 
-  for (const [key, value] of Object.entries(newTodo)) {
-    todo[key] = value;
-  }
+//   const index = todos.indexOf(todo);
+//   todos[index] = newTodo;
 
-  return todo;
-}
+//   return todo;
+// }
+
+// export async function findByIdAndUpdate(id, newTodo) {
+//   id = Number(id);
+//   const todo = todos.find((c) => c.id === id);
+
+//   if (!todo) {
+//     return null;
+//   }
+
+//   for (const [key, value] of Object.entries(newTodo)) {
+//     todo[key] = value;
+//   }
+
+//   return todo;
+// }

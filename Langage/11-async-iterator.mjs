@@ -3,7 +3,7 @@ import { createInterface } from "node:readline/promises";
 import { createReadStream } from "node:fs";
 
 try {
-  for await (const _ of setInterval(1000, "", { signal: AbortSignal.timeout(5000) })) {
+  for await (const _ of setInterval(1000, "", { signal: AbortSignal.timeout(5001) })) {
     console.log(`1 seconde s'est écoulée`);
   }
 } catch (err) {

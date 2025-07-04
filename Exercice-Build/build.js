@@ -13,7 +13,7 @@ function md5(bufferOrString) {
 
 const argv = minimist(process.argv.slice(2), {
   boolean: ["minify", "hash"],
-  default: { minify: false, hash: false }
+  default: { minify: false, hash: false },
 });
 
 const distPath = resolve(import.meta.dirname, "dist");

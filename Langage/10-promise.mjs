@@ -1,12 +1,12 @@
 // function timeout(ms) {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
-//       resolve();
+//       resolve('ABC');
 //     }, ms);
 //   });
 // }
 
-// await timeout(1000);
+// const result = await timeout(1000);
 // console.log("1 seconde s'est écoulée");
 
 // timeout(2000).then(() => {
@@ -45,5 +45,5 @@ const first = await Promise.race([readFile(".editorconfig", 'utf-8'), setTimeout
 console.log(first);
 
 // Promise.any
-const any = await Promise.any([ping("https://www.google.com"), ping("https://www.example.com")]);
-console.log(any.toString());
+// const any = await Promise.any([ping("https://www.google.com"), ping("https://www.example.com")]);
+// console.log(any.toString());
