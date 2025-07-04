@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "Langage"
+		},
+		{
+			"path": "Modules"
+		},
+		{
+			"path": "Exercice-Build"
+		},
+		{
+			"path": "API-Node.js"
+		},
+		{
+			"path": "Express-Traditionnal"
+		},
+		{
+			"path": "express-rest"
+		}
+	],
+	"settings": {}
+}
