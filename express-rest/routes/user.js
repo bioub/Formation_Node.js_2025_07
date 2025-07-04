@@ -9,4 +9,9 @@ router.post('/login',
   userCtrl.login
 );
 
+router.post('/register',
+  express.json(),
+  userCtrl.create
+);
+
 export default router;
